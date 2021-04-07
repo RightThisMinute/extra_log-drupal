@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "RightThisMinute\\Drupal\\extra_log": "src"
+            "RightThisMinute\\Drupal\\extra_log\\": "src"
         },
         "files": [
             "src/base.php"
