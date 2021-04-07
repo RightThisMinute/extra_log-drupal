@@ -1,0 +1,22 @@
+{
+    "name": "rightthisminute/extra_log-drupal",
+    "description": "Drupal 7 library for more easily adding extra values to watchdog log entry bodies.",
+    "type": "drupal-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Donovan Mueller",
+            "email": "zotobi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "RightThisMinute\\Drupal\\extra_log": "src"
+        },
+        "files": [
+            "src/base.php"
+        ]
+    }
+}
