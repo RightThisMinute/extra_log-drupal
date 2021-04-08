@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+
 namespace RightThisMinute\Drupal\extra_log;
 
 
@@ -143,6 +144,7 @@ function _($module, $message, array $vars=[], $level=WATCHDOG_INFO) : void
 function debug($module, $message, array $vars=[])
 {
   _($module, $message, $vars, WATCHDOG_DEBUG);
+  _fixPhpStormInspection();
 }
 
 
@@ -165,6 +167,7 @@ function debug($module, $message, array $vars=[])
 function info($module, $message, array $vars=[])
 {
   _($module, $message, $vars, WATCHDOG_INFO);
+  _fixPhpStormInspection();
 }
 
 
@@ -187,6 +190,7 @@ function info($module, $message, array $vars=[])
 function notice($module, $message, array $vars=[])
 {
   _($module, $message, $vars, WATCHDOG_NOTICE);
+  _fixPhpStormInspection();
 }
 
 
@@ -209,6 +213,7 @@ function notice($module, $message, array $vars=[])
 function warning($module, $message, array $vars=[])
 {
   _($module, $message, $vars, WATCHDOG_WARNING);
+  _fixPhpStormInspection();
 }
 
 
@@ -231,4 +236,17 @@ function warning($module, $message, array $vars=[])
 function error($module, $message, array $vars=[])
 {
   _($module, $message, $vars, WATCHDOG_ERROR);
+  _fixPhpStormInspection();
 }
+
+
+/**
+ * PhpStorm 2021.1 has a bug with one of its inspections. Basically, when
+ * calling a function whose body _only_ calls one function of a particular name
+ * ("_()" and "log()" have been identified so far) the "Expression result
+ * unused" inspection gets triggered.
+ *
+ * @see https://github.com/donut/bug_report-phpstorm2021.1_unused_result
+ * @see https://youtrack.jetbrains.com/issue/WI-59716
+ */
+function _fixPhpStormInspection() : void {}
